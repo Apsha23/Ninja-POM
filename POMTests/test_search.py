@@ -18,3 +18,9 @@ class TestSearch:
         search_page = SearchPage(self.driver)
         no_result_text = search_page.search_none()  # returns text
         assert "There is no product" in no_result_text
+
+    def test_search_product(self):
+        search_page = SearchPage(self.driver)
+        search_page.search_phone("Phone")
+
+

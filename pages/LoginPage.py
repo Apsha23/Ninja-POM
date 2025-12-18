@@ -49,3 +49,37 @@ class HomePage:
         WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.login_button_xpath))
         ).click()
+
+    def login_page_valid_email_invalid_password(self,email, password):
+        WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.LINK_TEXT, self.my_account_link_text))
+        ).click()
+
+        WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.LINK_TEXT, self.login_link_text))
+        ).click()
+
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, self.email_entry_xpath))
+        ).send_keys(email)
+
+        self.driver.find_element(By.XPATH, self.password_entry_xpath).send_keys(password)
+
+    def login_page_invalid_email_valid_password(self, email, password):
+        WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.LINK_TEXT, self.my_account_link_text))
+        ).click()
+
+        WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.LINK_TEXT, self.login_link_text))
+        ).click()
+
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, self.email_entry_xpath))
+        ).send_keys(email)
+
+        self.driver.find_element(By.XPATH, self.password_entry_xpath).send_keys(password)
+
+
+
+

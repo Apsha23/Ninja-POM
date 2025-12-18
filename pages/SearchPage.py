@@ -62,3 +62,14 @@ class SearchPage:
         return WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, self.no_product_found_xpath))
         ).text
+
+    def search_phone(self,text_data):
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.NAME, self.search_box_name))
+        ).clear()
+        self.driver.find_element(By.NAME, self.search_box_name).send_keys(text_data)
+
+        WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.search_button_xpath))
+        ).click()
+
