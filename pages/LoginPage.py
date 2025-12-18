@@ -12,6 +12,9 @@ class HomePage:
     password_entry_xpath = "//input[@id='input-password']"
     login_button_xpath = "//input[@value='Login']"
 
+
+
+
     def login_page_valid_credentials(self, email, password):
         WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.LINK_TEXT, self.my_account_link_text))
@@ -79,6 +82,7 @@ class HomePage:
         ).send_keys(email)
 
         self.driver.find_element(By.XPATH, self.password_entry_xpath).send_keys(password)
+
 
 
 
