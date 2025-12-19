@@ -4,10 +4,21 @@ from pages.LoginPage import HomePage
 @pytest.mark.usefixtures("setup_teardown")
 @pytest.mark.FullFunctional
 class TestLogin:
+
     @pytest.mark.smoke
-    def test_valid_credentials(self):
-       home_page = HomePage(self.driver)
-       home_page.login_page_valid_credentials("apshashaik050@gmail.com","12345")
+
+    # def test_valid_credentials(self):
+    #    home_page = HomePage(self.driver)
+    #    home_page.login_page_valid_credentials("apshashaik050@gmail.com","12345")
+
+    @pytest.mark.parametrize("input_email,input_password",
+                             [("apshashaik050@gmail.com", "123456"), ("apshashaik050@gmail.com", "123456"),
+                              ("apshashaik050@gmail.com", "123456"), ("apshashaik050@gmail.com", "123456")])
+
+    def test_parametrize(self, input_email, input_password):
+        home_page = HomePage(self.driver)
+        home_page.login_page_valid_credentials(input_email, input_password)
+
 
     @pytest.mark.smoke
     def test_invalid_credentials(self):
