@@ -84,6 +84,9 @@ class HomePage:
         self.driver.find_element(By.XPATH, self.password_entry_xpath).send_keys(password)
 
 
+    def login_page_international_email_password(self, email, password):
+        pass
 
 
-
+    def login_page_with_special_characters(self, email, password):
+        pass

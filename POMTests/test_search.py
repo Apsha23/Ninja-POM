@@ -24,4 +24,18 @@ class TestSearch:
         search_page = SearchPage(self.driver)
         search_page.search_phone("Phone")
 
+    @pytest.mark.xfail
+    def test_gibberish1(self):
+        search_page = SearchPage(self.driver)
+        search_page.search_gibberish_text_xfail("qwertyuiop")
+        # assert self.gibberish_assertion == "https://tutorialsninja.com/demo/index.php?route=product/search&search=qwerty"
+        current_url = self.driver.current_url
+        assert "ASDFGHJKL" in current_url
 
+    @pytest.mark.xfail
+    def test_gibberish2(self):
+        search_page = SearchPage(self.driver)
+        search_page.search_gibberish_text_xpass("qwertyuiop")
+        # assert self.gibberish_assertion == "https://tutorialsninja.com/demo/index.php?route=product/search&search=qwertyuiop"
+        current_url = self.driver.current_url
+        assert "qwertyuiop" in current_url

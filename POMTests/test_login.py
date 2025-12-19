@@ -22,4 +22,12 @@ class TestLogin:
         home_page = HomePage(self.driver)
         home_page.login_page_invalid_email_valid_password("apshashaik@gmail.com","12345")
 
+    @pytest.mark.skip(reason = 'not implemented yet')
+    def test_login_international(self):
+        home_page = HomePage(self.driver)
+        home_page.login_page_international_email_password("","")
 
+    @pytest.mark.skip(reason='not implemented yet')
+    def test_login_special_characters(self):
+        home_page = HomePage(self.driver)
+        home_page.login_page_with_special_characters("", "")

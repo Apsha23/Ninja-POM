@@ -13,6 +13,7 @@ class SearchPage:
     valid_product_link_text = "HP LP3065"
     no_product_found_xpath = '//input[@id="button-search"]/following-sibling::p'
 
+
     # Search with valid input
     def search_valid_input(self, text_data):
         # Wait for search box to be visible
@@ -73,3 +74,23 @@ class SearchPage:
             EC.element_to_be_clickable((By.XPATH, self.search_button_xpath))
         ).click()
 
+    def search_gibberish_text_xfail(self,text_data):
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.NAME, self.search_box_name))
+        ).clear()
+        self.driver.find_element(By.NAME, self.search_box_name).send_keys(text_data)
+
+        WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.search_button_xpath))
+        ).click()
+
+    def search_gibberish_text_xpass(self,text_data):
+
+         WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.NAME, self.search_box_name))
+         ).clear()
+         self.driver.find_element(By.NAME, self.search_box_name).send_keys(text_data)
+
+         WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.search_button_xpath))
+         ).click()
