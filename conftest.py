@@ -3,7 +3,7 @@ from selenium import webdriver
 from utilities import PullConfigurations
 
 
-@pytest.fixture()
+@pytest.fixture(scope="class")
 def setup_teardown(request):
     # driver = None
     browserobject = PullConfigurations.read_configurations("basic", "browser")
